@@ -3,7 +3,7 @@ import { fetchBazarApi } from "@/lib/api";
 import ProductCard from "@/components/ProductCard";
 import Banner from "@/components/Banner";
 
-// export const revalidate = 60; // প্রতি ৬০ সেকেন্ডে ডেটা রিভ্যালিডেট হবে
+
 
 export default async function HomePage() {
   let products = [];
