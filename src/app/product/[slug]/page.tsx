@@ -156,7 +156,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <div className="bg-[rgb(250,252,250)] border border-green-100 p-5 rounded-2xl shadow-xs flex flex-col justify-between">
             <span className="text-xs font-semibold text-gray-500 block mb-1">সর্বাধিক দাম</span>
             <span className="text-2xl font-black text-error my-1">
-              ৳ {toBengaliNumber(maxMarket.price)}
+             {toBengaliNumber(maxMarket.price)} টাকা
             </span>
             <span className="text-xs text-base-content/70 mt-1">
               সবচেয়ে বেশি দামের বাজার: <strong className="text-[rgb(29,39,31)]">{maxMarket.name}</strong>
@@ -166,8 +166,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
           {/* গড় দাম কার্ড */}
           <div className="bg-[rgb(250,252,250)] border border-green-100 p-5 rounded-2xl shadow-xs flex flex-col justify-between">
             <span className="text-xs font-semibold text-gray-500 block mb-1">গড় দাম</span>
-            <span className="text-2xl font-black text-primary my-1">
-              ৳ {toBengaliNumber(product.today)}
+            <span className="text-2xl font-black text-success my-1">
+              {toBengaliNumber(product.today)} টাকা
             </span>
             <span className="text-xs text-base-content/70 mt-1">
               প্রতি {displayUnit} - এর হিসাবে
