@@ -1,6 +1,6 @@
 # Project Name: 🛒 BazarDor (বাজার দর)
 
-## Short Description: A modern and dynamic price-tracking web application that allows users to view and compare current market prices of essential commodities at a glance.
+## A modern and dynamic price-tracking web application that allows users to view and compare current market prices of essential commodities at a glance.
 
 ---
 
