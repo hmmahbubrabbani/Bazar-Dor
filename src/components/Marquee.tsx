@@ -51,7 +51,7 @@ export default function Marquee() {
   return (
     <div className="bg-[rgb(250,252,250)] text-[rgb(29,39,31)] py-2.5 overflow-hidden border-b border-green-100 text-sm shadow-xs w-full">
       <div className="flex items-center whitespace-nowrap overflow-hidden">
-        <MarqueeText direction="right" duration={35}>
+        <MarqueeText direction="right" duration={25}>
           <div className="inline-flex items-center space-x-6 py-0.5">
             {products.map((product: any, index: number) => {
               const displayName = product.nameBn || product.name;
