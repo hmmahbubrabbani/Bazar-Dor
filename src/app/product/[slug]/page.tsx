@@ -6,7 +6,7 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-// ইংরেজি ইউনিটকে বাংলায় রূপান্তর করার ফাংশন
+
 const getBanglaUnit = (unit: string) => {
   const map: Record<string, string> = {
     kg: "কেজি",
@@ -23,7 +23,7 @@ const getBanglaUnit = (unit: string) => {
   return map[unit?.toLowerCase()] || unit;
 };
 
-// ইংরেজি সংখ্যাকে বাংলায় রূপান্তর করার ফাংশন
+
 const toBengaliNumber = (num: number | string) => {
   if (num === undefined || num === null) return "N/A";
   const bengaliDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
@@ -47,7 +47,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
     console.error("Failed to fetch product detail:", error);
   }
 
-  // পণ্য না পাওয়া গেলে 404 দেখাবে
+
   if (!product) {
     notFound();
   }
@@ -58,7 +58,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const arrow = isUp ? "▲" : isDown ? "▼" : "—";
   const displayUnit = getBanglaUnit(product.unit);
 
-  // দামের পার্থক্য হিসাব করা (আজকের দাম - গতকালের দাম)
   const priceDiff = Math.abs((product.today || 0) - (product.yesterday || 0));
   const diffText = isUp 
     ? `গতকালের তুলনায় আজ দাম বেড়েছে - ${toBengaliNumber(priceDiff)} টাকা` 
@@ -66,7 +65,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
     ? `গতকালের তুলনায় আজ দাম কমেছে - ${toBengaliNumber(priceDiff)} টাকা` 
     : "গতকালের তুলনায় আজ দাম অপরিবর্তিত রয়েছে";
 
-  // বাজারগুলো থেকে সর্বনিম্ন ও সর্বাধিক দাম এবং বাজার নির্ণয়
+ 
   let minMarket = { name: "তথ্য নেই", price: product.today || 0 };
   let maxMarket = { name: "তথ্য নেই", price: product.today || 0 };
 
@@ -86,7 +85,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 space-y-8">
       
-      {/* ব্রেডক্রাম্ব: হোম > categoryName > productName */}
+      
       <div className="text-xs md:text-sm font-medium text-base-content/70 flex items-center gap-2 overflow-x-auto whitespace-nowrap py-1">
         <Link href="/" className="hover:text-primary transition-colors">
           হোম
@@ -101,7 +100,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </span>
       </div>
 
-      {/* প্রোডাক্ট হেডার কার্ড */}
+    
       <div className="bg-[rgb(250,252,250)] p-6 md:p-8 rounded-3xl border border-green-100 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-5">
           <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center text-4xl shadow-inner border border-green-100 shrink-0">
@@ -120,7 +119,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* ডান পাশের বক্স */}
+  
         <div className="text-center md:text-right bg-white p-5 rounded-2xl shadow-xs border border-green-100 w-full 
         md:w-auto flex flex-col items-center md:items-center gap-1.5 min-w-[140px]">
           <p>আজকের দাম</p>
@@ -136,12 +135,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* দামের সারসংক্ষেপ সেকশন */}
+   
       <div className="space-y-4">
         <h2 className="text-2xl font-bold text-[rgb(29,39,31)]">দামের সারসংক্ষেপ</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           
-          {/* সর্বনিম্ন দাম কার্ড */}
+       
           <div className="bg-[rgb(250,252,250)] border border-green-100 p-5 rounded-2xl shadow-xs flex flex-col justify-between">
             <span className="text-xs font-semibold text-gray-500 block mb-1">সর্বনিম্ন দাম</span>
             <span className="text-2xl font-black text-success my-1">
@@ -152,7 +151,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             </span>
           </div>
 
-          {/* সর্বাধিক দাম কার্ড */}
+        
           <div className="bg-[rgb(250,252,250)] border border-green-100 p-5 rounded-2xl shadow-xs flex flex-col justify-between">
             <span className="text-xs font-semibold text-gray-500 block mb-1">সর্বাধিক দাম</span>
             <span className="text-2xl font-black text-error my-1">
@@ -163,7 +162,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             </span>
           </div>
 
-          {/* গড় দাম কার্ড */}
+         
           <div className="bg-[rgb(250,252,250)] border border-green-100 p-5 rounded-2xl shadow-xs flex flex-col justify-between">
             <span className="text-xs font-semibold text-gray-500 block mb-1">গড় দাম</span>
             <span className="text-2xl font-black text-success my-1">
@@ -177,7 +176,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* বিভিন্ন বাজারের দামের তালিকা */}
+   
       <div className="space-y-4">
         <h2 className="text-2xl font-bold text-[rgb(29,39,31)]">বাজারভিত্তিক আজকের দাম</h2>
         

@@ -14,7 +14,7 @@ export default function ProfilePage() {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  // সেশন ডেটা লোড হলে নাম ইনপুটে সেট করা
+  
   useEffect(() => {
     if (!isPending && !session) {
       router.push("/signin");
@@ -23,7 +23,7 @@ export default function ProfilePage() {
     }
   }, [session, isPending, router]);
 
-  // প্রোফাইল আপডেট হ্যান্ডলার
+ 
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -48,7 +48,7 @@ export default function ProfilePage() {
     }
   };
 
-  // সাইন আউট হ্যান্ডলার
+ 
   const handleSignOut = async () => {
     await authClient.signOut({
       fetchOptions: {
@@ -70,14 +70,14 @@ export default function ProfilePage() {
   if (!session) return null;
 
   const user = session.user;
-  // ইউজারের ইমেজ না থাকলে ডিফল্ট প্লেসহোল্ডার বা নামের প্রথম অক্ষর দিয়ে অ্যাভাটার
+
   const userImage = user.image || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop";
 
   return (
     <div className="min-h-[85vh] bg-[rgb(240,245,240)] py-10 px-4">
       <div className="max-w-4xl mx-auto space-y-6">
         
-        {/* পেজ হেডার */}
+       
         <div className="space-y-1">
           <h1 className="text-2xl md:text-3xl font-black text-[rgb(29,39,31)]">
             আমার প্রোফাইল
@@ -87,7 +87,7 @@ export default function ProfilePage() {
           </p>
         </div>
 
-        {/* কার্ড ১: ইউজার ওভারভিউ ও সাইন আউট বাটন */}
+   
         <div className="bg-[rgb(250,252,250)] p-6 rounded-3xl border border-green-100 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4 w-full sm:w-auto">
             <div className="relative w-16 h-16 rounded-2xl overflow-hidden border border-green-200 shrink-0 bg-white shadow-xs">
@@ -116,7 +116,7 @@ export default function ProfilePage() {
           </button>
         </div>
 
-        {/* কার্ড ২: তথ্য ও আপডেট ফর্ম */}
+       
         <div className="bg-[rgb(250,252,250)] p-6 md:p-8 rounded-3xl border border-green-100 shadow-sm space-y-6">
           <h2 className="text-lg md:text-xl font-bold text-[rgb(29,39,31)] border-b border-green-50 pb-3">
             তথ্য

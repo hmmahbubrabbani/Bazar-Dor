@@ -29,7 +29,7 @@ interface ProductCardProps {
   product: Product;
 }
 
-// ইংরেজি ইউনিটকে বাংলায় রূপান্তর করার ফাংশন
+
 const getBanglaUnit = (unit: string) => {
   const map: Record<string, string> = {
     kg: "কেজি",
@@ -46,7 +46,7 @@ const getBanglaUnit = (unit: string) => {
   return map[unit?.toLowerCase()] || unit;
 };
 
-// ইংরেজি সংখ্যাকে বাংলায় রূপান্তর করার ফাংশন
+
 const toBengaliNumber = (num: number | string) => {
   const bengaliDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
   return num
@@ -60,7 +60,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const isUp = product.change?.dir === "up";
   const isDown = product.change?.dir === "down";
   
-  // স্টাইল ও আইকন নির্ধারণ (Up = Red, Down = Green)
+ 
   const changeColor = isUp ? "text-error bg-error/10" : isDown ? "text-success bg-success/10" : "text-base-content/70 bg-base-200";
   const arrow = isUp ? "▲" : isDown ? "▼" : "—";
   const displayUnit = getBanglaUnit(product.unit);
@@ -70,7 +70,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       href={`/product/${product.slug}`} 
       className="card bg-[rgb(250,252,250)] border border-green-100 shadow-xs hover:shadow-md hover:border-green-300 transition-all duration-300 rounded-2xl overflow-hidden flex flex-col justify-between p-3.5 space-y-2 block group cursor-pointer"
     >
-      {/* মাঝের অংশ: ইমোজিসহ শুধুমাত্র পণ্যের নাম */}
+   
       <div className="flex items-center gap-2.5">
         <div className="w-10 h-10 rounded-lg bg-green-50 border border-green-100 flex items-center justify-center text-xl shrink-0 shadow-inner group-hover:scale-105 transition-transform">
           {product.image || "📦"}
@@ -83,7 +83,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
       </div>
 
-      {/* দামের উপরে "আজকের দাম" এবং সমান্তরালে পার্সেন্টেজ */}
+    
       <div className="flex items-end justify-between px-0.5 pt-1">
         <div>
           <span className="text-[14px] text-[rgb(29,39,31)] block leading-tight mb-0.5">আজকের দাম</span>

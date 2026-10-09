@@ -4,7 +4,7 @@ import { mongodbAdapter } from "@better-auth/mongo-adapter";
 
 const uri = process.env.BETTER_AUTH_DB_URI as string;
 
-// MongoDB ক্লায়েন্ট ইনিশিয়ালাইজেশন
+
 const client = new MongoClient(uri);
 const db = client.db('bazar-dor');
 

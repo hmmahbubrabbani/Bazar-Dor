@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Input, Button } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
-import toast from "react-hot-toast"; // ১. টোস্ট ইমপোর্ট করা হলো
+import toast from "react-hot-toast"; 
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -16,7 +16,6 @@ export default function SignUpPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // সাইন আপ হ্যান্ডলার
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -24,10 +23,9 @@ export default function SignUpPage() {
     if (password !== confirmPassword) {
       const errMessage = "পাসওয়ার্ড দুটি মিলছে না। অনুগ্রহ করে মিলিয়ে লিখুন।";
       setError(errMessage);
-      toast.error(errMessage); // ভ্যালিডেশন এরর টোস্ট
+      toast.error(errMessage);
       return;
     }
-
     setLoading(true);
 
     try {
@@ -42,10 +40,8 @@ export default function SignUpPage() {
         throw new Error(authError.message || "রেজিস্ট্রেশন করতে সমস্যা হয়েছে।");
       }
 
-      // সফল রেজিস্ট্রেশন টোস্ট
       toast.success("সফলভাবে অ্যাকাউন্ট তৈরি হয়েছে! দয়া করে সাইন ইন করুন।");
 
-      // টোস্ট নোটিফিকেশন স্ক্রিনে দেখানোর জন্য সামান্য সময় দিয়ে রিডাইরেক্ট করা হলো
       setTimeout(() => {
         router.push("/signin");
       }, 1000);
@@ -59,7 +55,7 @@ export default function SignUpPage() {
     }
   };
 
-  // গুগল লগইন হ্যান্ডলার
+
   const handleGoogleLogin = async () => {
     setError("");
     try {
@@ -73,7 +69,7 @@ export default function SignUpPage() {
     }
   };
 
-  // গিটহাব লগইন হ্যান্ডলার
+
   const handleGithubLogin = async () => {
     setError("");
     try {
@@ -90,7 +86,7 @@ export default function SignUpPage() {
   return (
     <div className="min-h-[85vh] flex flex-col items-center justify-center px-4 py-12 bg-[rgb(240,245,240)]">
       
-      {/* হেডার অংশ */}
+    
       <div className="text-center space-y-1.5 mb-6">
         <h1 className="text-3xl font-black text-[rgb(29,39,31)]">
           অ্যাকাউন্ট তৈরি করুন
@@ -108,7 +104,7 @@ export default function SignUpPage() {
           </div>
         )}
 
-        {/* ফর্ম অংশ */}
+    
         <form onSubmit={handleSignUp} className="space-y-4">
            <label className="block text-xs font-semibold text-[rgb(29,39,31)] mb-1.5">
               নাম
@@ -198,7 +194,7 @@ export default function SignUpPage() {
           <div className="flex-grow border-t border-gray-200"></div>
         </div>
 
-        {/* সোশ্যাল লগইন বাটন */}
+      
         <div className="grid grid-cols-2 gap-3">
           <Button 
             onClick={handleGoogleLogin}
@@ -226,14 +222,12 @@ export default function SignUpPage() {
           </Button>
         </div>
 
-        {/* সাইন ইন লিংক */}
         <p className="text-center text-xs text-base-content/70 font-medium">
           অ্যাকাউন্ট আছে? <Link href="/signin" className="text-[#008236] font-bold hover:underline">সাইন ইন করুন</Link>
         </p>
 
       </div>
 
-      {/* হোম পেজে ফিরে যাওয়ার লিংক */}
       <div className="mt-6">
         <Link href="/" className="text-xs text-base-content/50 hover:text-[rgb(29,39,31)] font-medium transition-colors">
           ← হোম পেজে ফিরে যান

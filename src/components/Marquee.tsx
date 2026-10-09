@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import MarqueeText from "react-marquee-text";
 import { fetchBazarApi } from "@/lib/api";
 
-// ইংরেজি ইউনিটকে বাংলায় রূপান্তর করার ফাংশন
+
 const getBanglaUnit = (unit: string) => {
   const map: Record<string, string> = {
     kg: "কেজি",

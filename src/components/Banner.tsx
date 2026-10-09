@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Banner() {
   const [banglaDate, setBanglaDate] = useState("");
 
-  // বাংলায় আজকের তারিখ জেনারেট করা
+ 
   useEffect(() => {
     const today = new Date();
     const options: Intl.DateTimeFormatOptions = {
@@ -21,11 +21,11 @@ export default function Banner() {
 
   return (
     <section className="bg-[rgb(240,245,240)] py-8 md:py-10">
-      {/* নেভবারের সাথে উইথ মিলানোর জন্য max-w-7xl এবং px-4 ব্যবহার করা হয়েছে */}
+      
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center bg-[rgb(250,252,250)] rounded-3xl p-6 md:p-10 shadow-sm border border-green-100">
           
-          {/* বাম পাশের টেক্সট ও বাটন */}
+          
           <div className="space-y-4 text-center md:text-left">
             <span className="font-bold text-green-600 text-sm md:text-base tracking-wide bg-green-50 px-3 py-1 rounded-full inline-block border border-green-200 shadow-sm">
               {banglaDate || "লোড হচ্ছে..."}
@@ -43,7 +43,7 @@ export default function Banner() {
             </div>
           </div>
 
-          {/* ডান পাশের ইমেজ */}
+        
           <div className="flex justify-center md:justify-end">
             <div className="w-64 md:w-80 relative aspect-square rounded-2xl overflow-hidden">
               <Image

@@ -19,7 +19,6 @@ export default async function HomePage() {
     console.error("Failed to fetch products or categories:", error);
   }
 
-  // প্রোডাক্টের change প্রপার্টি থেকে সঠিক শতকরা ভ্যালু বের করার হেল্পার ফাংশন
   const getChangeValue = (product: any) => {
     if (!product.change) return 0;
     if (typeof product.change === "object") {
@@ -29,7 +28,7 @@ export default async function HomePage() {
     return Number(product.change) || 0;
   };
 
-  // দামের পরিবর্তন অনুযায়ী Top 6 Risers (▲) এবং Top 6 Fallers (▼) ফিল্টার করা
+ 
   const sortedByChange = [...products].sort((a, b) => getChangeValue(b) - getChangeValue(a));
   
   const topRisers = sortedByChange.filter((p) => getChangeValue(p) > 0).slice(0, 6);
@@ -37,14 +36,11 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[rgb(240,245,240)]">
-      
-      {/* Hero / Banner Component */}
+        
       <Banner />
-
-      {/* Main Container */}
+ 
       <div className="max-w-7xl mx-auto px-4 py-10 space-y-16 w-full flex-grow">
         
-        {/* Section A — আজ দাম বেড়েছে ▲ */}
         {topRisers.length > 0 && (
           <section className="space-y-6">
             <div>
@@ -60,7 +56,6 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* Section B — আজ দাম কমেছে ▼ */}
         {topFallers.length > 0 && (
           <section className="space-y-6">
             <div>
@@ -76,7 +71,7 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* Section C — সব পণ্য (#সব-পণ্য) */}
+      
         <section id="সব-পণ্য" className="space-y-6 pt-6">
           <div>
             <h2 className="text-3xl font-extrabold tracking-tight text-[rgb(29,39,31)]">সব পণ্য</h2>

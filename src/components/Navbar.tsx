@@ -10,10 +10,8 @@ export default function Navbar() {
   const [banglaDate, setBanglaDate] = useState("");
   const [isMounted, setIsMounted] = useState(false);
 
-  // BetterAuth থেকে রিয়েল-টাইম সেশন ডাটা ফেচ করা
   const { data: session, isPending } = authClient.useSession();
 
-  // হাইড্রেশন মিসম্যাচ এড়াতে কম্পোনেন্ট মাউন্ট হওয়ার পর ডেট সেট করা
   useEffect(() => {
     setIsMounted(true);
     const today = new Date();
@@ -27,12 +25,11 @@ export default function Navbar() {
     setBanglaDate(formattedDate);
   }, []);
 
-  // সাইন আউট হ্যান্ডলার
   const handleSignOut = async () => {
     await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-          window.location.href = "/signin"; // সাইন আউটের পর সাইন-ইন পেজে রিডাইরেক্ট
+          window.location.href = "/signin"; 
         },
       },
     });
@@ -42,7 +39,6 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-[rgb(250,252,250)]/95 backdrop-blur-md border-b border-green-100 shadow-xs">
       <div className="max-w-7xl mx-auto px-4">
         
-        {/* প্রথম সারি: লোগো + বাংলা তারিখ এবং অথ বাটন / ড্রপডাউন */}
         <div className="flex items-center justify-between py-3 border-b border-green-100">
           
           <Link href="/" className="flex items-center gap-3 group">
@@ -69,7 +65,7 @@ export default function Navbar() {
             {isPending ? (
               <div className="w-6 h-6 rounded-full animate-pulse bg-green-100"></div>
             ) : session?.user ? (
-              /* ইউজার লগইন করা থাকলে ড্রপডাউন মেনু দেখাবে */
+             
               <div className="dropdown dropdown-end">
                 <div tabIndex={0} role="button" className="flex items-center gap-2.5 bg-green-50 hover:bg-green-100 border border-green-200 px-3 py-1.5 rounded-2xl transition cursor-pointer">
                   <div className="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-xs shadow-xs">
@@ -109,7 +105,7 @@ export default function Navbar() {
                 </ul>
               </div>
             ) : (
-              /* ইউজার লগইন না করা থাকলে সাইন ইন / সাইন আপ বাটন দেখাবে */
+              
               <div className="flex items-center gap-2">
                 <Link href="/signin" className="btn btn-sm btn-ghost font-medium">
                   সাইন ইন
@@ -122,7 +118,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* দ্বিতীয় সারি: Suspense বাউন্ডারির ভেতরে ক্যাটাগরি ন্যাভিগেশন লিঙ্কস */}
         <Suspense fallback={<div className="py-3 text-xs text-gray-400">ক্যাটাগরি লোড হচ্ছে...</div>}>
           <NavLinks />
         </Suspense>

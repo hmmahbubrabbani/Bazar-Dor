@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
-import toast from "react-hot-toast"; // ১. টোস্ট ইমপোর্ট করা হলো
+import toast from "react-hot-toast"; 
 
 export default function SignInPage() {
   const router = useRouter();
@@ -14,7 +14,6 @@ export default function SignInPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // ইমেল ও পাসওয়ার্ড দিয়ে লগইন হ্যান্ডলার
   const handleCredentialsLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -30,10 +29,8 @@ export default function SignInPage() {
         throw new Error(authError.message || "লগইন করতে সমস্যা হয়েছে। ইমেল বা পাসওয়ার্ড পরীক্ষা করুন।");
       }
 
-      // সফল সাইন ইন টোস্ট নোটিফিকেশন
       toast.success("সফলভাবে সাইন ইন হয়েছে! স্বাগতম।");
 
-      // টোস্ট স্ক্রিনে দেখানোর জন্য ১ সেকেন্ড সময় দিয়ে রিডাইরেক্ট করা হলো
       setTimeout(() => {
         router.push("/");
       }, 1000);
@@ -41,13 +38,12 @@ export default function SignInPage() {
     } catch (err: any) {
       const errMsg = err.message || "লগইন করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।";
       setError(errMsg);
-      toast.error(errMsg); // এরর টোস্ট নোটিফিকেশন
+      toast.error(errMsg); 
     } finally {
       setLoading(false);
     }
   };
 
-  // সোশ্যাল লগইন (Google) হ্যান্ডলার
   const handleGoogleLogin = async () => {
     setError("");
     try {
@@ -61,7 +57,6 @@ export default function SignInPage() {
     }
   };
 
-  // সোশ্যাল লগইন (GitHub) হ্যান্ডলার
   const handleGithubLogin = async () => {
     setError("");
     try {

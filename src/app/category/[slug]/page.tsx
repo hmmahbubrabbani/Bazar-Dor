@@ -9,7 +9,6 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-// ইংরেজি সংখ্যাকে বাংলায় রূপান্তর করার ফাংশন
 const toBengaliNumber = (num: number) => {
   const bengaliDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
   return num
@@ -54,7 +53,7 @@ export default function CategoryPage({ params }: PageProps) {
     loadData();
   }, [slug]);
 
-  // সর্টিং লজিক
+ 
   const sortedProducts = [...products].sort((a, b) => {
     if (sortBy === "price-asc") {
       return (a.today || a.price || 0) - (b.today || b.price || 0);
@@ -67,7 +66,7 @@ export default function CategoryPage({ params }: PageProps) {
       const nameB = b.nameBn || b.name || "";
       return nameA.localeCompare(nameB, "bn");
     }
-    return 0; // default
+    return 0; 
   });
 
   if (loading) {
@@ -82,7 +81,6 @@ export default function CategoryPage({ params }: PageProps) {
     <div className="min-h-screen py-10 px-4">
       <div className="max-w-6xl mx-auto space-y-6">
         
-        {/* ক্যাটাগরি হেডার */}
         <div className="bg-[rgb(250,252,250)] p-6 md:p-8 rounded-3xl border border-green-100 shadow-sm flex items-center gap-4">
           <span className="text-5xl p-3 bg-white rounded-2xl shadow-inner border border-base-200 shrink-0">
             {currentCategoryIcon}
@@ -97,7 +95,6 @@ export default function CategoryPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* আলাদা বক্স: ডানপাশে "সাজান" এবং কাস্টম ড্রপডাউন */}
         <div className="bg-[rgb(250,252,250)] px-6 py-4 rounded-2xl border border-green-100 shadow-xs flex items-center justify-end">
           <div className="flex items-center gap-3">
             <span className="text-sm font-semibold text-gray-700">সাজান</span>
@@ -119,7 +116,6 @@ export default function CategoryPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* পণ্যের গ্রিড */}
         <p className="text-sm text-base-content/60 mt-1 font-medium">
               মোট {toBengaliNumber(products.length)} টি পণ্য দেখানো হচ্ছে
             </p>
