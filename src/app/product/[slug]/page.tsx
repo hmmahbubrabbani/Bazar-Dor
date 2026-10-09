@@ -202,7 +202,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                       <td><span className="badge badge-sm badge-ghost font-medium">{m.division}</span></td>
                       <td className="text-success font-bold">{toBengaliNumber(m.min)} টাকা</td>
                       <td className="text-error font-bold">{toBengaliNumber(m.max)} টাকা</td>
-                      <td className="text-primary font-bold">{toBengaliNumber(avgPrice)} টাকা</td>
+                      <td className="text-success font-bold">{toBengaliNumber(avgPrice)} টাকা</td>
                     </tr>
                   );
                 })}
