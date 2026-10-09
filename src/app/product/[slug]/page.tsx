@@ -124,7 +124,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         <div className="text-center md:text-right bg-white p-5 rounded-2xl shadow-xs border border-green-100 w-full 
         md:w-auto flex flex-col items-center md:items-center gap-1.5 min-w-[140px]">
           <p>আজকের দাম</p>
-          <span className="text-3xl font-extrabold text-primary">
+          <span className="text-3xl font-extrabold text-[rgb(29,39,31)]">
             {toBengaliNumber(product.today)}
           </span>
           <span className="text-xs font-medium text-gray-500">
